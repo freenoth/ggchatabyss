@@ -38,36 +38,29 @@ sudo make --quiet && sudo make install --quiet
 # устанавливаем пакеты для питона
 echo -e "\e[32mInstalling Python3.6 packages\e[0m"
 pip3 install -U pip
-
 pip3 install virtualenv
 
-## создаём виртуальную среду для приложения
-#echo -e "\e[32mMaking virtual environment\e[0m"
-#cd /vagrant/source
-#rm -r venv
-#
-#virtualenv -p python3.6 --always-copy venv
-#
-## activate virtual env
-#source venv/bin/activate
 
-pip3 install asyncio
+echo -e "\e[32mInstalling nginx\e[0m"
+sudo apt-get install fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libvpx1 libxpm4 libxslt1.1 nginx nginx-common nginx-full
 
-pip3 install django
+echo -e "\e[32mInstalling uwsgi\e[0m"
+sudo pip3 install uwsgi
 
-pip3 install djangorestframework
-pip3 install markdown       # Markdown support for the browsable API.
-pip3 install django-filter  # Filtering support
+echo -e "\e[32mInstalling PostgreSQL\e[0m"
+sudo apt-get install libpq5 postgresql postgresql-9.4 postgresql-client-9.4 postgresql-client-common postgresql-common ssl-cert
 
-pip3 install requests
+echo -e "\e[32mConfiguring PostgreSQL\e[0m"
+sudo -u postgres createuser -s admin
+sudo -u postgres createdb -O admin ggchatabyss
+sudo -u postgres psql -c "alter role admin with password 'password';"
 
-pip3 install websockets
 
-pip3 install aiohttp
-pip3 install cchardet
-pip3 install aiodns
+echo -e "\e[32mRunning _DEV_INIT.SH\e[0m"
+bash _dev_init.sh
 
-#deactivate
+echo -e "\e[32mRunning _DEV_DEPLOY.SH\e[0m"
+bash _dev_deploy.sh
 
-echo -e "\e[32mComplete!\e[0m" 
+echo -e "\e[32mComplete!\e[0m"
 exit 0
