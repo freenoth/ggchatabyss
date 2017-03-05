@@ -17,10 +17,16 @@ sudo cp -f -r configs/uwsgi/uwsgi.service /etc/systemd/system/
 
 sudo rm /etc/nginx/sites-enabled/*
 sudo rm /etc/nginx/sites-available/*
-sudo rm /var/www/*
+sudo rm -r /var/www/ggchatabyss_static
+sudo rm -r /var/www/ggchatabyss_media
 
-sudo cp -f -r configs/nginx/ggchatabyss.conf /etc/nginx/sites-available/
-sudo ln -s -f /etc/nginx/sites-available/ggchatabyss.conf /etc/nginx/sites-enabled
+sudo mkdir /var/www/ggchatabyss_static
+sudo chown -R 1000:www-data /var/www/ggchatabyss_static
+sudo mkdir /var/www/ggchatabyss_media
+sudo chown -R 1000:www-data /var/www/ggchatabyss_media
+
+sudo cp -f -r configs/nginx/ggchatabyss_dev /etc/nginx/sites-available/
+sudo ln -s -f /etc/nginx/sites-available/ggchatabyss_dev /etc/nginx/sites-enabled
 
 sudo systemctl enable nginx
 sudo systemctl enable uwsgi

@@ -10,3 +10,5 @@ python3 /var/www/ggchatabyss/manage.py migrate
 python3 /var/www/ggchatabyss/manage.py collectstatic --no-input -v 0
 
 deactivate
+
+sudo systemctl restart uwsgi

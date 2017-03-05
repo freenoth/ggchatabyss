@@ -1,0 +1,52 @@
+upstream django {
+    server unix:///run/uwsgi/ggchatabyss.sock;
+}
+
+server {
+	listen 80;
+	listen [::]:80;
+	server_name ggchatabyss.ru www.ggchatabyss.ru;
+
+	return 301 https://ggchatabyss.ru$request_uri;
+}
+
+server {
+	listen 443 ssl;
+	listen [::]:443 ssl;
+	server_name www.ggchatabyss.ru;
+
+	# SSL configuration
+	include snippets/ssl-ggchatabyss.ru.conf;
+	include snippets/ssl-params.conf;
+
+	return 301 https://ggchatabyss.ru$request_uri;
+}
+
+server {
+	listen 443 ssl;
+	listen [::]:443 ssl;
+	server_name ggchatabyss.ru;
+
+    # SSL configuration
+	include snippets/ssl-ggchatabyss.ru.conf;
+	include snippets/ssl-params.conf;
+
+	charset     utf-8;
+
+	access_log	/var/log/nginx/ggchatabyss.ru_access.log combined;
+	error_log	/var/log/nginx/ggchatabyss.ru_error.log error;
+
+	location /media/  {
+		alias /var/www/ggchatabyss_media/;
+	}
+
+	location /static/ {
+		alias /var/www/ggchatabyss_static/;
+	}
+
+	location / {
+		include uwsgi_params;
+		uwsgi_param UWSGI_SCHEME https;
+		uwsgi_pass django;
+	}
+}

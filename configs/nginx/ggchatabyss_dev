@@ -1,4 +1,4 @@
-# ggchatabyss.conf
+# ggchatabyss for develop
 
 # the upstream component nginx needs to connect to
 upstream django {
@@ -15,12 +15,12 @@ server {
     # Django media
     location /media  {
         # your Django project's media files - amend as required
-        alias /var/www/ggchatabyss/media;
+        alias /var/www/ggchatabyss_media;
     }
 
     location /static {
         # your Django project's static files - amend as required
-        alias /var/www/ggchatabyss/static;
+        alias /var/www/ggchatabyss_static;
     }
 
     # Finally, send all non-media requests to the Django server.
