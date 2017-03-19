@@ -6,12 +6,12 @@ mkdir ~/tmp-ggchatabyss-deploy
 mkdir ~/tmp-ggchatabyss-deploy_backup
 
 cp -r ggchatabyss/* ~/tmp-ggchatabyss-deploy/
-cp /var/www/ggchatabyss/ggchatabyss/local_settings.py ~/tmp-ggchatabyss-deploy/ggchatabyss
+cp -r /var/www/ggchatabyss/ggchatabyss/local_settings.py ~/tmp-ggchatabyss-deploy/ggchatabyss/local_settings.py
 
 cp -r /var/www/ggchatabyss/* ~tmp-ggchatabyss-deploy_backup/
 rm -r /var/www/ggchatabyss/*
 
-cp ~/tmp-ggchatabyss-deploy/* /var/www/ggchatabyss/
+cp -r ~/tmp-ggchatabyss-deploy/* /var/www/ggchatabyss/
 
 source /var/venv/ggchatabyss/bin/activate
 
