@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome to GG Chat Abyss!</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+{% extends '__base.html' %}
+
+{% block title %}Welcome to GG Chat Abyss!{% endblock %}
+
+{% block styles %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
-</head>
-<body>
-<div class="progress">
-    <h1>In Progress...</h1>
-</div>
-</body>
-</html>
+{% endblock %}
+
+{% block scripst %}
+{% endblock %}
+
+{% block content %}
+    <div class="progress">
+        <h1>In Progress...</h1>
+    </div>
+{% endblock %}
