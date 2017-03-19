@@ -21,6 +21,8 @@ python3 /var/www/ggchatabyss/manage.py collectstatic --no-input -v 0
 
 deactivate
 
+sudo chown -R 1000:www-data /var/www/ggchatabyss
+
 sudo systemctl restart uwsgi
 
 exit 0
