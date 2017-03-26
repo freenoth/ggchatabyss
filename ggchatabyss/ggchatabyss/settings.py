@@ -46,8 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third party apps
+    'django_crontab',
+
     # My apps
     'main.apps.MainConfig',
+    'smiles.apps.SmilesConfig',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +85,14 @@ if DEBUG:
     TEMPLATES[0]['OPTIONS']['context_processors'] += ('django.template.context_processors.debug',)
 
 WSGI_APPLICATION = 'ggchatabyss.wsgi.application'
+
+
+# Cron
+# https://pypi.python.org/pypi/django-crontab
+
+CRONJOBS = [
+    ('00 04 * * *', 'smiles.cron.start_smile_reaper'),
+]
 
 
 # Database

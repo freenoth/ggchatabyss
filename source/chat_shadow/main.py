@@ -7,8 +7,8 @@
 
 import asyncio
 import logging
-from chat_shadow import GGChatAbyss
-from settings import LOGGER_CONFIG
+from .chat_shadow import GGChatAbyss
+from .settings import LOGGER_CONFIG
 
 
 def _main():

@@ -11,7 +11,7 @@ import logging
 import websockets
 import re
 
-from settings import GG_WEBSOCKET_LINK, GG_USERS_IN_CHAT_LIMIT
+from .settings import GG_WEBSOCKET_LINK, GG_USERS_IN_CHAT_LIMIT
 
 
 class GGChatAbyss(object):
