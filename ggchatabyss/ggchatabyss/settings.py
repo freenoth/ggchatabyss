@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'ggchatabyss.wsgi.application'
 # https://pypi.python.org/pypi/django-crontab
 
 CRONJOBS = [
-    ('00 04 * * *', 'smiles.cron.start_smile_reaper'),
+    ('00 04 * * *', 'smiles.reaper.start_smile_reaper'),
 ]
 
 
